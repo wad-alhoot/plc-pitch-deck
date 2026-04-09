@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html class="dark" dir="rtl" lang="ar">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>PharmaLink Care (PLC) - Interactive Pitch Deck</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "primary": "#2DA9D0",
+                "background": "#0b0e14",
+                "surface": "#10131a",
+                "surface-container": "#1d2026",
+                "surface-container-low": "#191c22",
+                "surface-container-high": "#272a31",
+                "on-surface": "#e1e2eb",
+                "on-surface-variant": "#bdc8ce",
+                "outline-variant": "#3e484d",
+                "error": "#ffb4ab",
+                "tertiary": "#ffb871",
+                "success": "#4ade80"
+              },
+              "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.5rem",
+                "xl": "1rem",
+                "full": "9999px"
+              },
+              "fontFamily": {
+                "headline": ["Tajawal", "Inter"],
+                "body": ["Tajawal", "Inter"]
+              }
+            },
+          },
+        }
+    </script>
+    <style>
+        body { font-family: 'Tajawal', 'Inter', sans-serif; overflow: hidden; } /* Prevent main scroll */
+        .glass { background: rgba(29, 32, 38, 0.7); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.05); }
+        .glow-cyan { box-shadow: 0 0 30px rgba(45, 169, 208, 0.1); }
+        .hero-gradient { background: radial-gradient(circle at top right, rgba(45, 169, 208, 0.15), transparent 40%); }
+        .tech-card:hover { transform: translateY(-5px); transition: all 0.3s ease; border-color: #2DA9D0; }
+        .ltr-num { direction: ltr; display: inline-block; }
+        @keyframes pulse-soft { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+        .live-indicator { animation: pulse-soft 2s infinite; }
+
+        /* Page System Styles */
+        .page {
+            display: none; /* Hide all pages by default */
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            height: calc(100vh - 40px); /* Fill screen minus padding */
+            overflow-y: auto; /* Allow scrolling inside the page if content is long */
+            padding-bottom: 80px; /* Space for nav buttons */
+        }
+        .page.active {
+            display: block; /* Show active page */
+            opacity: 1;
+        }
+
+        /* Sidebar Active State */
+        .nav-link.active {
+            color: white;
+            background-color: #1d2026; /* surface-container */
+            border-right-color: #2DA9D0; /* primary */
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface selection:bg-primary/30 min-h-screen hero-gradient">
+
+<aside class="fixed right-0 top-0 h-screen w-72 bg-surface/80 backdrop-blur-2xl flex flex-col py-8 z-[60] border-l border-outline-variant/10 shadow-2xl">
+    <div class="px-8 mb-12">
+        <div class="flex items-center gap-2 mb-2">
+            <div class="w-8 h-8 bg-primary rounded flex items-center justify-center">
+                <span class="material-symbols-outlined text-background font-bold text-xl">link</span>
+            </div>
+            <h1 class="text-2xl font-black tracking-tight text-white italic">PLC<span class="text-primary text-sm not-italic font-normal mr-1">CARE</span></h1>
+        </div>
+        <p class="text-[10px] text-primary/70 tracking-[0.2em] uppercase font-bold">Investor Presentation</p>
+    </div>
+
+    <nav class="flex-1 space-y-2 px-4" id="main-nav">
+        <a class="nav-link active flex items-center gap-4 px-5 py-4 text-primary font-bold rounded-xl transition-all border-r-4 border-transparent hover:bg-surface-container" href="#" onclick="showPage('page-welcome')">
+            <span class="material-symbols-outlined">home</span>
+            <span>الترحيب</span>
+        </a>
+        <a class="nav-link flex items-center gap-4 px-5 py-4 text-on-surface-variant hover:text-white hover:bg-surface-container rounded-xl transition-all border-r-4 border-transparent" href="#" onclick="showPage('page-kpi')">
+            <span class="material-symbols-outlined">analytics</span>
+            <span>الأداء السوقي</span>
+        </a>
+        <a class="nav-link flex items-center gap-4 px-5 py-4 text-on-surface-variant hover:text-white hover:bg-surface-container rounded-xl transition-all border-r-4 border-transparent" href="#" onclick="showPage('page-flow')">
+            <span class="material-symbols-outlined">account_tree</span>
+            <span>تدفق النظام</span>
+        </a>
+        <a class="nav-link flex items-center gap-4 px-5 py-4 text-on-surface-variant hover:text-white hover:bg-surface-container rounded-xl transition-all border-r-4 border-transparent" href="#" onclick="showPage('page-ai')">
+            <span class="material-symbols-outlined">psychology</span>
+            <span>رؤية الذكاء الاصطناعي</span>
+        </a>
+        <a class="nav-link flex items-center gap-4 px-5 py-4 text-on-surface-variant hover:text-white hover:bg-surface-container rounded-xl transition-all border-r-4 border-transparent" href="#" onclick="showPage('page-tech')">
+            <span class="material-symbols-outlined">memory</span>
+            <span>البنية التحتية</span>
+        </a>
+        <a class="nav-link flex items-center gap-4 px-5 py-4 text-on-surface-variant hover:text-white hover:bg-surface-container rounded-xl transition-all border-r-4 border-transparent" href="#" onclick="showPage('page-compliance')">
+            <span class="material-symbols-outlined">verified_user</span>
+            <span>الامتثال</span>
+        </a>
+    </nav>
+
+    <div class="px-6 mt-auto">
+        <div class="bg-surface-container p-4 rounded-2xl border border-outline-variant/10 text-center">
+            <p class="text-[10px] text-on-surface-variant mb-2">Confidential v2.0</p>
+            <button class="w-full py-2 bg-primary/20 text-primary text-xs font-bold rounded-lg border border-primary/30">Request Full Deck</button>
+        </div>
+    </div>
+</aside>
+
+<main class="mr-72 p-10 max-w-7xl mx-auto relative">
+
+    <div id="page-welcome" class="page active">
+        <header class="flex flex-col justify-center items-center h-full text-center">
+            <div class="flex items-center gap-2 mb-6">
+                <span class="px-3 py-1 bg-success/20 text-success text-xs font-black rounded-full uppercase tracking-wider live-indicator">Live Demo Ready</span>
+            </div>
+            <h2 class="text-7xl font-black text-white leading-tight mb-6">إعادة تعريف<br/>الخدمات السريرية بذكاء</h2>
+            <p class="text-2xl text-on-surface-variant max-w-3xl leading-relaxed mb-12">منصة <span class="text-primary font-bold">PharmaLink Care (PLC)</span> المتكاملة تضمن دقة، كفاءة، وأمان توريد الأدوية داخل المنشآت الصحية باستخدام الذكاء الاصطناعي وإنترنت الأشياء.</p>
+
+            <div class="flex gap-6">
+                <button class="px-8 py-4 bg-primary text-black font-black rounded-xl text-lg flex items-center gap-3 shadow-2xl" onclick="showPage('page-kpi')">
+                    ابدأ العرض التقديمي <span class="material-symbols-outlined">arrow_back</span>
+                </button>
+            </div>
+        </header>
+    </div>
+
+    <div id="page-kpi" class="page">
+        <header class="mb-16">
+            <h2 class="text-4xl font-black text-white">الأداء السوقي والمؤشرات التشغيلية</h2>
+            <p class="text-on-surface-variant mt-2 text-lg">أرقام حقيقية تعكس حجم التأثير والفرصة</p>
+        </header>
+
+        <section class="grid grid-cols-2 gap-8 mb-16">
+            <div class="bg-surface-container rounded-3xl p-8 border border-outline-variant/10 glow-cyan group">
+                <p class="text-on-surface-variant text-sm font-bold uppercase mb-4">إجمالي تتبع الأدوية (تراكمي)</p>
+                <div class="flex items-end justify-between">
+                    <span class="text-6xl font-black ltr-num text-white">1,247,000+</span>
+                    <span class="material-symbols-outlined text-primary text-6xl group-hover:scale-110 transition-transform">inventory_2</span>
+                </div>
+                <p class="text-xs text-success mt-4">Growth: 15% MoM</p>
+            </div>
+            <div class="bg-surface-container rounded-3xl p-8 border border-outline-variant/10">
+                <p class="text-on-surface-variant text-sm font-bold uppercase mb-4">أخطاء منعها النظام (Medication Errors Prevented)</p>
+                <div class="flex items-end justify-between">
+                    <span class="text-6xl font-black ltr-num text-error">23,490</span>
+                    <span class="material-symbols-outlined text-error text-6xl animate-pulse">report</span>
+                </div>
+                 <p class="text-xs text-on-surface-variant mt-4 italic">Estimated cost saving: $1.2M</p>
+            </div>
+            <div class="bg-surface-container rounded-3xl p-8 border border-outline-variant/10 group">
+                <p class="text-on-surface-variant text-sm font-bold uppercase mb-4">دقة التحقق بالرؤية الاصطناعية</p>
+                <div class="flex items-end justify-between">
+                    <span class="text-6xl font-black ltr-num text-primary">99.8%</span>
+                    <span class="material-symbols-outlined text-primary/30 text-6xl">biotech</span>
+                </div>
+            </div>
+            <div class="bg-surface-container rounded-3xl p-8 border border-outline-variant/10">
+                <p class="text-on-surface-variant text-sm font-bold uppercase mb-4">العائد على الاستثمار للمستشفيات (ROI)</p>
+                <div class="flex items-end justify-between">
+                    <span class="text-6xl font-black ltr-num text-tertiary">35%<span class="text-2xl not-italic mr-1 text-on-surface-variant">/Annually</span></span>
+                    <span class="material-symbols-outlined text-tertiary/30 text-6xl">trending_up</span>
+                </div>
+            </div>
+        </section>
+
+        <div class="absolute bottom-10 left-10 flex gap-4">
+            <button class="px-6 py-3 bg-surface-container rounded-full text-white text-sm" onclick="showPage('page-welcome')">السابق</button>
+            <button class="px-6 py-3 bg-primary text-black font-bold rounded-full text-sm" onclick="showPage('page-flow')">التالي: تدفق النظام</button>
+        </div>
+    </div>
+
+    <div id="page-flow" class="page">
+        <header class="mb-16">
+            <h2 class="text-4xl font-black text-white">هيكلية تدفق البيانات والعمليات</h2>
+            <p class="text-on-surface-variant mt-2 text-lg">من الطلب الطبي إلى السرير: دورة حياة ذكية مغلقة</p>
+        </header>
+
+        <div class="bg-surface-container-low rounded-[3rem] p-12 relative overflow-hidden border border-outline-variant/5 mb-16 h-96 flex items-center">
+            <div class="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-primary/20 to-transparent -translate-y-12"></div>
+
+            <div class="flex justify-between w-full relative z-10">
+                <div class="flex flex-col items-center gap-6 group">
+                    <div class="w-20 h-20 rounded-2xl bg-surface-container flex items-center justify-center border border-outline-variant/20 group-hover:border-primary transition-all duration-500">
+                        <span class="material-symbols-outlined text-primary text-3xl font-light">description</span>
+                    </div>
+                    <div class="text-center">
+                        <p class="font-bold text-white">طلب ذكي</p>
+                        <p class="text-[10px] text-on-surface-variant mt-1 ltr-num">CPOE</p>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center gap-6 group">
+                    <div class="w-20 h-20 rounded-2xl bg-surface-container flex items-center justify-center border border-outline-variant/20 group-hover:border-primary transition-all">
+                        <span class="material-symbols-outlined text-primary text-3xl">camera</span>
+                    </div>
+                    <div class="text-center">
+                        <p class="font-bold text-white">تحقق بصري</p>
+                        <p class="text-[10px] text-on-surface-variant mt-1 ltr-num">AI Vision</p>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center gap-6 group scale-125">
+                    <div class="w-20 h-20 rounded-[2rem] bg-primary flex items-center justify-center shadow-[0_0_40px_rgba(45,169,208,0.4)] border-4 border-white/20">
+                        <span class="material-symbols-outlined text-white text-4xl fill-1">nfc</span>
+                    </div>
+                    <div class="text-center">
+                        <p class="font-black text-primary">التشفير الذكي</p>
+                        <p class="text-[9px] text-on-surface-variant mt-1">NFC</p>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center gap-6 group">
+                    <div class="w-20 h-20 rounded-2xl bg-surface-container flex items-center justify-center border border-outline-variant/20 group-hover:border-primary transition-all">
+                        <span class="material-symbols-outlined text-primary text-3xl">sensors</span>
+                    </div>
+                    <div class="text-center">
+                        <p class="font-bold text-white">تتبع المسار</p>
+                        <p class="text-[10px] text-on-surface-variant mt-1 ltr-num">RTLS</p>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center gap-6 group">
+                    <div class="w-20 h-20 rounded-2xl bg-surface-container flex items-center justify-center border border-outline-variant/20 group-hover:border-primary transition-all">
+                        <span class="material-symbols-outlined text-primary text-3xl">verified</span>
+                    </div>
+                    <div class="text-center">
+                        <p class="font-bold text-white">تأكيد السرير</p>
+                        <p class="text-[10px] text-on-surface-variant mt-1 ltr-num">Verification</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-10 flex gap-4">
+            <button class="px-6 py-3 bg-surface-container rounded-full text-white text-sm" onclick="showPage('page-kpi')">السابق</button>
+            <button class="px-6 py-3 bg-primary text-black font-bold rounded-full text-sm" onclick="showPage('page-ai')">التالي: رؤية AI</button>
+        </div>
+    </div>
+
+    <div id="page-ai" class="page">
+        <header class="mb-16">
+            <h2 class="text-4xl font-black text-white">محرك التحليل البصري (Vision AI Hub)</h2>
+            <p class="text-on-surface-variant mt-2 text-lg">ضمان الأمان السريري باستخدام خوارزميات التعرف المتقدمة</p>
+        </header>
+
+        <section class="grid grid-cols-12 gap-10 items-center mb-16">
+            <div class="col-span-6 rounded-[2.5rem] overflow-hidden border border-primary/20 shadow-2xl relative aspect-video bg-black">
+                <img alt="AI Vision" class="w-full h-full object-cover opacity-70" src="https://images.unsplash.com/photo-1587854230147-81796a7b99a9?auto=format&fit=crop&q=80&w=1000"/>
+
+                <div class="absolute inset-0 p-8 flex flex-col justify-between pointer-events-none">
+                    <div class="flex justify-between items-start">
+                        <div class="bg-black/50 backdrop-blur-md p-4 rounded-xl border-l-4 border-primary">
+                            <p class="text-[10px] text-primary font-bold mb-1">SCANNING UNIT #882</p>
+                            <p class="text-xs text-white ltr-num">Object: IV Bag (NaCl 0.9%)</p>
+                            <p class="text-xs text-success ltr-num mt-1 font-bold">Match: 99.82%</p>
+                        </div>
+                        <div class="w-2 h-2 rounded-full bg-error live-indicator"></div>
+                    </div>
+                    <div class="h-32 w-full border-[1px] border-primary/30 rounded-lg relative">
+                        <div class="absolute -top-1 -left-1 w-10 h-10 border-t-2 border-l-2 border-primary"></div>
+                        <div class="absolute -bottom-1 -right-1 w-10 h-10 border-b-2 border-r-2 border-primary"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-6 space-y-6">
+                <h4 class="text-2xl font-black text-white">التعرف الفوري والعميق على الأدوية</h4>
+                <p class="text-on-surface-variant text-base leading-relaxed">الجيل القادم من خوارزميات التعرف على الأدوية. لا يقوم النظام فقط بالتعرف على الصنف، بل يحلل "تاريخ الصلاحية"، "رقم التشغيلة"، و"سلامة العبوة" في أجزاء من الثانية، مما يمنع الأخطاء البشرية كلياً قبل التشفير.</p>
+
+                <div class="flex gap-4 pt-4 ltr-num">
+                    <div class="text-center px-6 py-3 bg-surface-container rounded-xl">
+                        <p class="text-[10px] text-on-surface-variant uppercase">Latency</p>
+                        <p class="text-xl font-black text-primary">120ms</p>
+                    </div>
+                    <div class="text-center px-6 py-3 bg-surface-container rounded-xl">
+                        <p class="text-[10px] text-on-surface-variant uppercase">Accuracy</p>
+                        <p class="text-xl font-black text-primary">99.8%</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="absolute bottom-10 left-10 flex gap-4">
+            <button class="px-6 py-3 bg-surface-container rounded-full text-white text-sm" onclick="showPage('page-flow')">السابق</button>
+            <button class="px-6 py-3 bg-primary text-black font-bold rounded-full text-sm" onclick="showPage('page-tech')">التالي: البنية التحتية</button>
+        </div>
+    </div>
+
+    <div id="page-tech" class="page">
+        <header class="mb-16">
+            <h2 class="text-4xl font-black text-white">البنية التحتية الصلبة للأجهزة Node Infrastructure</h2>
+            <p class="text-on-surface-variant mt-2 text-lg">أجهزة صناعية موثوقة تضمن اتصالاً دائماً وتتبعاً دقيقاً</p>
+        </header>
+
+        <section class="grid grid-cols-3 gap-8 mb-16">
+            <div class="bg-surface-container p-8 rounded-3xl border border-outline-variant/10 tech-card group flex flex-col items-center text-center">
+                <div class="w-24 h-24 bg-background rounded-2xl flex items-center justify-center text-primary mb-8 group-hover:bg-primary group-hover:text-black transition-all">
+                    <span class="material-symbols-outlined text-5xl">router</span>
+                </div>
+                <h5 class="font-black text-xl text-white">قارئات UHF الصناعية</h5>
+                <p class="text-xs text-on-surface-variant mt-2 ltr-num">Long-range tracking (up to 12m).</p>
+                <p class="text-sm text-on-surface-variant mt-4 leading-relaxed">نقاط قراءة ثابتة تُركب في الممرات والأبواب لتتبع حركة الأدوية والمخزون تلقائياً.</p>
+            </div>
+            <div class="bg-surface-container p-8 rounded-3xl border border-outline-variant/10 tech-card group flex flex-col items-center text-center">
+                <div class="w-24 h-24 bg-background rounded-2xl flex items-center justify-center text-primary mb-8 group-hover:bg-primary group-hover:text-black transition-all">
+                    <span class="material-symbols-outlined text-5xl">edgesensor_high</span>
+                </div>
+                <h5 class="font-black text-xl text-white">أجهزة المسح المحمولة</h5>
+                <p class="text-xs text-on-surface-variant mt-2 ltr-num">Rugged IP67, Android 13 Enterprise.</p>
+                <p class="text-sm text-on-surface-variant mt-4 leading-relaxed">أجهزة يدويّة للممرضين والصيادلة للتحقق الفوري السريع عند السرير أو المخزن.</p>
+            </div>
+            <div class="bg-surface-container p-8 rounded-3xl border border-outline-variant/10 tech-card group flex flex-col items-center text-center">
+                <div class="w-24 h-24 bg-background rounded-2xl flex items-center justify-center text-primary mb-8 group-hover:bg-primary group-hover:text-black transition-all">
+                    <span class="material-symbols-outlined text-5xl">print</span>
+                </div>
+                <h5 class="font-black text-xl text-white">طابعات التشفير المزدوج</h5>
+                <p class="text-xs text-on-surface-variant mt-2 ltr-num">Thermal + NFC encoding in single pass.</p>
+                <p class="text-sm text-on-surface-variant mt-4 leading-relaxed">تقوم بطباعة الملصق البصري وتشفير رقاقة NFC ببيانات المريض والدواء فوراً.</p>
+            </div>
+        </section>
+
+        <div class="absolute bottom-10 left-10 flex gap-4">
+            <button class="px-6 py-3 bg-surface-container rounded-full text-white text-sm" onclick="showPage('page-ai')">السابق</button>
+            <button class="px-6 py-3 bg-primary text-black font-bold rounded-full text-sm" onclick="showPage('page-compliance')">التالي: الامتثال</button>
+        </div>
+    </div>
+
+    <div id="page-compliance" class="page">
+        <header class="mb-16">
+            <h2 class="text-4xl font-black text-white">الامتثال، الأمن، والمعايير الدولية</h2>
+            <p class="text-on-surface-variant mt-2 text-lg">بنية تحتية متوافقة كلياً مع رؤية 2030 والمعايير الصحية العالمية</p>
+        </header>
+
+        <div class="bg-gradient-to-br from-surface-container to-surface-container-low p-12 rounded-[3rem] border border-outline-variant/10 relative overflow-hidden mb-16">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent opacity-50"></div>
+
+            <div class="grid grid-cols-4 gap-10">
+                <div class="space-y-4 col-span-2 bg-background/30 p-6 rounded-2xl">
+                    <p class="font-bold text-white text-base">هيئات الاعتماد والامتثال locally</p>
+                    <div class="flex gap-4 pt-2">
+                        <div class="px-5 py-3 bg-white/5 rounded-2xl border border-white/10 text-white font-bold text-sm flex items-center gap-2">
+                            <span class="material-symbols-outlined text-success">verified</span> SFDA Approved
+                        </div>
+                        <div class="px-5 py-3 bg-white/5 rounded-2xl border border-white/10 text-white font-bold text-sm flex items-center gap-2">
+                            <span class="material-symbols-outlined text-success">verified</span> Wasfaty Ready
+                        </div>
+                    </div>
+                </div>
+                 <div class="space-y-4 col-span-2 bg-background/30 p-6 rounded-2xl ltr-num text-left">
+                    <p class="font-bold text-white text-base">Security & Interoperability</p>
+                     <div class="flex gap-4 pt-2">
+                        <div class="px-5 py-3 bg-white/5 rounded-2xl border border-white/10 text-white font-bold text-sm flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">security</span> ISO 27001
+                        </div>
+                        <div class="px-5 py-3 bg-white/5 rounded-2xl border border-white/10 text-white font-bold text-sm flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">sync</span> HL7 FHIR
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <div class="h-20 flex items-center justify-center mt-12 bg-success/5 rounded-xl border border-success/20">
+                <p class="text-lg font-bold text-success flex items-center gap-3">
+                    <span class="material-symbols-outlined">gpp_good</span>
+                    سيادة البيانات: جميع بيانات المرضى والمستشفيات تُستضاف وتُعالج محلياً داخل المملكة (KSA Local Hosting).
+                </p>
+            </div>
+        </div>
+
+         <footer class="text-center">
+            <p class="text-2xl font-black text-white mb-2 italic">Empowering Tomorrow's Healthcare, Today.</p>
+            <p class="text-on-surface-variant text-sm">شريككم الاستراتيجي لتحقيق التميز التشغيلي السريري.</p>
+        </footer>
+
+        <div class="absolute bottom-10 left-10 flex gap-4">
+            <button class="px-6 py-3 bg-surface-container rounded-full text-white text-sm" onclick="showPage('page-tech')">السابق</button>
+            <button class="px-6 py-3 bg-tertiary text-black font-bold rounded-full text-sm" onclick="showPage('page-welcome')">إنهاء العرض العودة للرئيسية</button>
+        </div>
+    </div>
+
+</main>
+
+<script>
+    // System to show/hide pages
+    function showPage(pageId) {
+        // 1. Hide all pages
+        const pages = document.querySelectorAll('.page');
+        pages.forEach(page => {
+            page.classList.remove('active');
+        });
+
+        // 2. Show the requested page
+        const selectedPage = document.getElementById(pageId);
+        if (selectedPage) {
+            selectedPage.classList.add('active');
+            // Scroll to top of the new page content
+            selectedPage.scrollTop = 0;
+        }
+
+        // 3. Update Sidebar Active State
+        updateSidebarActive(pageId);
+    }
+
+    function updateSidebarActive(pageId) {
+        // Remove active class from all links
+        const navLinks = document.querySelectorAll('#main-nav .nav-link');
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+        });
+
+        // Add active class to the link that matches the page
+        // We do this by mapping page IDs to the corresponding nav link index or attribute.
+        // A simple way is to use the onClick function content or add an data-page attribute.
+        // Here we'll just check the onClick.
+        navLinks.forEach(link => {
+            if (link.getAttribute('onclick').includes(pageId)) {
+                link.classList.add('active');
+            }
+        });
+    }
+
+    // Optional: Keyboard Navigation (Arrow keys)
+    document.addEventListener('keydown', function(event) {
+        const activePage = document.querySelector('.page.active');
+        if (!activePage) return;
+
+        let nextPageId = '';
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowDown') { // Next Page (Left for RTL)
+             const nextBtn = activePage.querySelector('button.bg-primary');
+             if(nextBtn) nextBtn.click();
+        } else if (event.key === 'ArrowRight' || event.key === 'ArrowUp') { // Previous Page
+             const prevBtn = activePage.querySelector('button.bg-surface-container');
+             if(prevBtn) prevBtn.click();
+        }
+    });
+</script>
+</body>
+</html>
