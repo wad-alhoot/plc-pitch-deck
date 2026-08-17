@@ -114,7 +114,7 @@
 
     <div class="px-6 mt-auto">
         <div class="bg-surface-container p-4 rounded-2xl border border-outline-variant/10 text-center">
-            <p class="text-[10px] text-on-surface-variant mb-2">Confidential v2.0</p>
+            <p class="text-[10px] text-on-surface-variant mb-2">Concept deck · v2.1</p>
             <button class="w-full py-2 bg-primary/20 text-primary text-xs font-bold rounded-lg border border-primary/30">Request Full Deck</button>
         </div>
     </div>
@@ -125,7 +125,7 @@
     <div id="page-welcome" class="page active">
         <header class="flex flex-col justify-center items-center h-full text-center">
             <div class="flex items-center gap-2 mb-6">
-                <span class="px-3 py-1 bg-success/20 text-success text-xs font-black rounded-full uppercase tracking-wider live-indicator">Live Demo Ready</span>
+                <span class="px-3 py-1 bg-tertiary/20 text-tertiary text-xs font-black rounded-full uppercase tracking-wider">نموذج تصوّري · Concept</span>
             </div>
             <h2 class="text-7xl font-black text-white leading-tight mb-6">إعادة تعريف<br/>الخدمات السريرية بذكاء</h2>
             <p class="text-2xl text-on-surface-variant max-w-3xl leading-relaxed mb-12">منصة <span class="text-primary font-bold">PharmaLink Care (PLC)</span> المتكاملة تضمن دقة، كفاءة، وأمان توريد الأدوية داخل المنشآت الصحية باستخدام الذكاء الاصطناعي وإنترنت الأشياء.</p>
@@ -135,41 +135,50 @@
                     ابدأ العرض التقديمي <span class="material-symbols-outlined">arrow_back</span>
                 </button>
             </div>
+
+            <p class="mt-14 max-w-3xl text-xs leading-relaxed text-on-surface-variant/80 border border-outline-variant/20 rounded-xl px-6 py-4">
+                <span class="text-tertiary font-bold">تنويه:</span>
+                الشركة في مرحلة ما قبل النموذج الأولي (pre-MVP). جميع الأرقام الواردة في هذا العرض
+                <span class="text-white font-bold">أهداف مُنمذَجة توضيحية</span> مبنية على معدلات منشورة عالمياً،
+                وليست نتائج تشغيلية مُقاسة. لم يُمنح النظام حتى تاريخه أي اعتماد تنظيمي،
+                ولم تُعالَج به أي بيانات مرضى حقيقية.
+            </p>
         </header>
     </div>
 
     <div id="page-kpi" class="page">
         <header class="mb-16">
             <h2 class="text-4xl font-black text-white">الأداء السوقي والمؤشرات التشغيلية</h2>
-            <p class="text-on-surface-variant mt-2 text-lg">أرقام حقيقية تعكس حجم التأثير والفرصة</p>
+            <p class="text-on-surface-variant mt-2 text-lg">أهداف مُنمذَجة توضيحية — ليست نتائج تشغيلية مُقاسة</p>
         </header>
 
         <section class="grid grid-cols-2 gap-8 mb-16">
             <div class="bg-surface-container rounded-3xl p-8 border border-outline-variant/10 glow-cyan group">
-                <p class="text-on-surface-variant text-sm font-bold uppercase mb-4">إجمالي تتبع الأدوية (تراكمي)</p>
+                <p class="text-on-surface-variant text-sm font-bold uppercase mb-4">سعة التتبّع المستهدفة سنوياً <span class="text-tertiary">(هدف مُنمذَج)</span></p>
                 <div class="flex items-end justify-between">
-                    <span class="text-6xl font-black ltr-num text-white">1,247,000+</span>
+                    <span class="text-6xl font-black ltr-num text-white">1.2M+</span>
                     <span class="material-symbols-outlined text-primary text-6xl group-hover:scale-110 transition-transform">inventory_2</span>
                 </div>
-                <p class="text-xs text-success mt-4">Growth: 15% MoM</p>
+                <p class="text-xs text-on-surface-variant mt-4 italic">هدف السعة عند المرحلة الثالثة — لم يُقس بعد</p>
             </div>
             <div class="bg-surface-container rounded-3xl p-8 border border-outline-variant/10">
-                <p class="text-on-surface-variant text-sm font-bold uppercase mb-4">أخطاء منعها النظام (Medication Errors Prevented)</p>
+                <p class="text-on-surface-variant text-sm font-bold uppercase mb-4">الأخطاء القابلة للمنع <span class="text-tertiary">(أثر مُنمذَج)</span></p>
                 <div class="flex items-end justify-between">
-                    <span class="text-6xl font-black ltr-num text-error">23,490</span>
+                    <span class="text-6xl font-black ltr-num text-error">~23K</span>
                     <span class="material-symbols-outlined text-error text-6xl animate-pulse">report</span>
                 </div>
-                 <p class="text-xs text-on-surface-variant mt-4 italic">Estimated cost saving: $1.2M</p>
+                 <p class="text-xs text-on-surface-variant mt-4 italic">نمذجة على معدلات منشورة عالمياً — تحتاج قياساً محلياً</p>
             </div>
             <div class="bg-surface-container rounded-3xl p-8 border border-outline-variant/10 group">
-                <p class="text-on-surface-variant text-sm font-bold uppercase mb-4">دقة التحقق بالرؤية الاصطناعية</p>
+                <p class="text-on-surface-variant text-sm font-bold uppercase mb-4">دقة الرؤية <span class="text-tertiary">(هدف تصميمي)</span></p>
                 <div class="flex items-end justify-between">
-                    <span class="text-6xl font-black ltr-num text-primary">99.8%</span>
+                    <span class="text-6xl font-black ltr-num text-primary">&ge;99%</span>
                     <span class="material-symbols-outlined text-primary/30 text-6xl">biotech</span>
                 </div>
+                <p class="text-xs text-on-surface-variant mt-4 italic">هدف عند عتبة ثقة محددة — لم يُصادَق سريرياً بعد</p>
             </div>
             <div class="bg-surface-container rounded-3xl p-8 border border-outline-variant/10">
-                <p class="text-on-surface-variant text-sm font-bold uppercase mb-4">العائد على الاستثمار للمستشفيات (ROI)</p>
+                <p class="text-on-surface-variant text-sm font-bold uppercase mb-4">العائد المستهدف للمنشأة <span class="text-tertiary">(تقدير)</span></p>
                 <div class="flex items-end justify-between">
                     <span class="text-6xl font-black ltr-num text-tertiary">35%<span class="text-2xl not-italic mr-1 text-on-surface-variant">/Annually</span></span>
                     <span class="material-symbols-outlined text-tertiary/30 text-6xl">trending_up</span>
@@ -262,7 +271,7 @@
                         <div class="bg-black/50 backdrop-blur-md p-4 rounded-xl border-l-4 border-primary">
                             <p class="text-[10px] text-primary font-bold mb-1">SCANNING UNIT #882</p>
                             <p class="text-xs text-white ltr-num">Object: IV Bag (NaCl 0.9%)</p>
-                            <p class="text-xs text-success ltr-num mt-1 font-bold">Match: 99.82%</p>
+                            <p class="text-xs text-tertiary ltr-num mt-1 font-bold">Illustrative mock-up</p>
                         </div>
                         <div class="w-2 h-2 rounded-full bg-error live-indicator"></div>
                     </div>
@@ -278,12 +287,12 @@
 
                 <div class="flex gap-4 pt-4 ltr-num">
                     <div class="text-center px-6 py-3 bg-surface-container rounded-xl">
-                        <p class="text-[10px] text-on-surface-variant uppercase">Latency</p>
-                        <p class="text-xl font-black text-primary">120ms</p>
+                        <p class="text-[10px] text-on-surface-variant uppercase">Latency (هدف)</p>
+                        <p class="text-xl font-black text-primary">&lt;300ms</p>
                     </div>
                     <div class="text-center px-6 py-3 bg-surface-container rounded-xl">
-                        <p class="text-[10px] text-on-surface-variant uppercase">Accuracy</p>
-                        <p class="text-xl font-black text-primary">99.8%</p>
+                        <p class="text-[10px] text-on-surface-variant uppercase">Accuracy (هدف)</p>
+                        <p class="text-xl font-black text-primary">&ge;99%</p>
                     </div>
                 </div>
             </div>
@@ -337,7 +346,7 @@
     <div id="page-compliance" class="page">
         <header class="mb-16">
             <h2 class="text-4xl font-black text-white">الامتثال، الأمن، والمعايير الدولية</h2>
-            <p class="text-on-surface-variant mt-2 text-lg">بنية تحتية متوافقة كلياً مع رؤية 2030 والمعايير الصحية العالمية</p>
+            <p class="text-on-surface-variant mt-2 text-lg">المسارات التنظيمية المستهدفة — الحالة الحالية معلنة بصدق</p>
         </header>
 
         <div class="bg-gradient-to-br from-surface-container to-surface-container-low p-12 rounded-[3rem] border border-outline-variant/10 relative overflow-hidden mb-16">
@@ -345,13 +354,13 @@
 
             <div class="grid grid-cols-4 gap-10">
                 <div class="space-y-4 col-span-2 bg-background/30 p-6 rounded-2xl">
-                    <p class="font-bold text-white text-base">هيئات الاعتماد والامتثال locally</p>
+                    <p class="font-bold text-white text-base">المسارات التنظيمية المستهدفة محلياً <span class="text-tertiary text-xs">(لم تُستكمل بعد)</span></p>
                     <div class="flex gap-4 pt-2">
                         <div class="px-5 py-3 bg-white/5 rounded-2xl border border-white/10 text-white font-bold text-sm flex items-center gap-2">
-                            <span class="material-symbols-outlined text-success">verified</span> SFDA Approved
+                            <span class="material-symbols-outlined text-tertiary">pending</span> SFDA — مسار التسجيل قيد الإعداد
                         </div>
                         <div class="px-5 py-3 bg-white/5 rounded-2xl border border-white/10 text-white font-bold text-sm flex items-center gap-2">
-                            <span class="material-symbols-outlined text-success">verified</span> Wasfaty Ready
+                            <span class="material-symbols-outlined text-tertiary">pending</span> مصمَّم للتوافق مع وصفتي
                         </div>
                     </div>
                 </div>
@@ -359,10 +368,10 @@
                     <p class="font-bold text-white text-base">Security & Interoperability</p>
                      <div class="flex gap-4 pt-2">
                         <div class="px-5 py-3 bg-white/5 rounded-2xl border border-white/10 text-white font-bold text-sm flex items-center gap-2">
-                            <span class="material-symbols-outlined text-primary">security</span> ISO 27001
+                            <span class="material-symbols-outlined text-tertiary">pending</span> ISO 27001 — مستهدَف
                         </div>
                         <div class="px-5 py-3 bg-white/5 rounded-2xl border border-white/10 text-white font-bold text-sm flex items-center gap-2">
-                            <span class="material-symbols-outlined text-primary">sync</span> HL7 FHIR
+                            <span class="material-symbols-outlined text-primary">sync</span> HL7 FHIR R4 — معيار التصميم
                         </div>
                     </div>
                 </div>
@@ -370,7 +379,7 @@
              <div class="h-20 flex items-center justify-center mt-12 bg-success/5 rounded-xl border border-success/20">
                 <p class="text-lg font-bold text-success flex items-center gap-3">
                     <span class="material-symbols-outlined">gpp_good</span>
-                    سيادة البيانات: جميع بيانات المرضى والمستشفيات تُستضاف وتُعالج محلياً داخل المملكة (KSA Local Hosting).
+                    سيادة البيانات: التصميم يفرض استضافة ومعالجة كل البيانات داخل المملكة حصراً (me-central-2).
                 </p>
             </div>
         </div>
